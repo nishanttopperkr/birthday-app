@@ -1,17 +1,31 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js");
-  }
-</script>
-
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✅ MANIFEST (MOST IMPORTANT FOR INSTALL APP) -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Optional theme color -->
+    <meta name="theme-color" content="#0a1f44" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+
+    <!-- ✅ SERVICE WORKER REGISTRATION -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(() => console.log("SW Registered"))
+          .catch(err => console.log("SW Error", err));
+      }
+    </script>
+
     <title>birthday-app</title>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
